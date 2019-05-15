@@ -1,5 +1,5 @@
 # vps
-How to install Web server on VPS
+How to install Web server on VPS Centos 7
 
 
 # hocvps
