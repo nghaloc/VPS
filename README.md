@@ -13,6 +13,18 @@ E -- Nginx (Engine-x)
 M -- Mariadb
 P -- PHP
 
+# Addon
+// Virtual Host - Nginx server Block
+// Caching 
+// Git 
+// Google Pagespeed 
+// Gzip 
+// Let's Encrypt 
+// Memcache 
+// Phalcon module php 
+// phpmyadmin 
+// redis cache 
+// wordpress
 
 # Pure Nginx proxy Apache
 coming soon...
