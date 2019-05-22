@@ -1,0 +1,64 @@
+Download the latest Nginx for windows version: http://nginx.org/en/download.html
+Unzip to a directory like “d:\wemp” (wemp: windows + nginx + mariadb + php)
+Config: d:\wemp\conf\nginx.conf
+
+	location / {
+        root   html; # comment out default root at "nginx_install_dir\html", my dir: d:\wemp\html
+        index  index.html index.htm;
+        autoindex on; # Add this to enable directory listing
+    }
+	
+To run Nginx web server, open Command Prompt in Windows with Administrator, and follow in line bellow:
+	d:
+	cd \wemp
+	start nginx
+Browse to: http://localhost. AND you see: Wellcome to nginx! page
+##########################################
+Command
+##########################################
+
+nginx -s quit #Quit Nginx
+nginx -s reload # Reload Nginx
+
+To kill nginx
+taskkill /F /IM	nginx.exe
+
+##########################################
+Create batch Start Nginx
+##########################################
+
+Go to d:\wemp\
+
+===========================================
+Create file with filename: start_nginx.bat
+===========================================
+	@ECHO OFF
+
+	REM Start Nginx
+	tasklist /FI "IMAGENAME eq nginx.exe" 2>NUL | find /I /N "nginx.exe">NUL
+	IF NOT "%ERRORLEVEL%"=="0" (
+	   REM Nginx is NOT running, so start it
+	   d:
+	   cd \wemp
+	   start nginx.exe
+	   ECHO Nginx started.
+	) else (
+	   ECHO Nginx is already running.
+	)
+===========================================
+Create file with filename: stop_nginx.bat
+===========================================
+
+	@ECHO OFF
+
+	REM Stop Nginx
+	tasklist /FI "IMAGENAME eq nginx.exe" 2>NUL | find /I /N "nginx.exe">NUL
+	IF "%ERRORLEVEL%"=="0" (
+	   REM Nginx is currently running, so quit it
+	   d:
+	   cd \wemp
+	   nginx.exe -s quit
+	   ECHO Nginx quit issued.
+	) else (
+	   ECHO Nginx is not currently running.
+	)
